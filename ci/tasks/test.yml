@@ -10,7 +10,7 @@ inputs:
   path: bosh-src
 
 run:
-  path: bosh-load-tests/ci/tasks/test.sh
+  path: bosh-load-tests-workspace/ci/tasks/test.sh
 
 params:
   RUBY_VERSION: 2.1.7

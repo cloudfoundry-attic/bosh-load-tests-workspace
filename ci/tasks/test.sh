@@ -26,14 +26,14 @@ echo 'Installing dependencies...'
 
   echo "Building agent..."
   go/src/github.com/cloudfoundry/bosh-agent/bin/build
-)	
+)
 
 echo 'Running tests...'
 
-export GOPATH=$(realpath bosh-load-tests)
+export GOPATH=$(realpath bosh-load-tests-workspace)
 
 bosh_src_path="$( cd bosh-src && pwd )"
 
-sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g bosh-load-tests/ci/concourse-config.json
+sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g bosh-load-tests-workspace/ci/concourse-config.json
 
-go run bosh-load-tests/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go bosh-load-tests/ci/concourse-config.json
+go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go bosh-load-tests-workspace/ci/concourse-config.json
