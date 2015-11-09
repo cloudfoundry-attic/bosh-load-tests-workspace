@@ -4,8 +4,8 @@ platform: linux
 image: docker:///bosh/main
 
 inputs:
-- name: bosh-load-tests
-  path: bosh-load-tests
+- name: bosh-load-tests-workspace
+  path: bosh-load-tests-workspace
 - name: bosh-src
   path: bosh-src
 
