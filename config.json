@@ -1,5 +1,5 @@
 {
-  "assets_path" : "/Users/pivotal/workspace/bosh-load-tests/assets",
+  "assets_path" : "/Users/pivotal/workspace/bosh-load-tests-workspace/assets",
   "environment": "dummy",
   "director_migration_cmd": "BUNDLE_GEMFILE=/Users/pivotal/workspace/bosh/Gemfile bundle exec /Users/pivotal/workspace/bosh/bosh-director/bin/bosh-director-migrate",
   "director_start_cmd": "BUNDLE_GEMFILE=/Users/pivotal/workspace/bosh/Gemfile bundle exec /Users/pivotal/workspace/bosh/bosh-director/bin/bosh-director",
