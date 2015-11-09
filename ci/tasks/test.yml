@@ -1,0 +1,16 @@
+---
+platform: linux
+
+image: docker:///bosh/main
+
+inputs:
+- name: bosh-load-tests
+  path: bosh-load-tests
+- name: bosh-src
+  path: bosh-src
+
+run:
+  path: bosh-load-tests/ci/tasks/test.sh
+
+params:
+  RUBY_VERSION: 2.1.7
