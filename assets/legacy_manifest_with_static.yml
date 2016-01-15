@@ -1,0 +1,42 @@
+---
+name: {{ .DeploymentName }}
+director_uuid: {{ .DirectorUUID }}
+networks:
+- name: default
+  subnets:
+  - range: "192.168.1.0/24"
+    gateway: "192.168.1.1"
+    dns: ["192.168.1.1", "192.168.1.2"]
+    static: ["192.168.1.10-192.168.1.30"]
+    reserved: []
+    cloud_properties: {}
+compilation:
+  workers: 1
+  network: default
+  cloud_properties: {}
+resource_pools:
+- name: default
+  cloud_properties: {}
+  network: default
+  stemcell:
+    name: 'ubuntu-stemcell'
+    version: '1'
+releases:
+- name: bosh-release
+  version: 0.1-dev
+update:
+  canaries: 2
+  canary_watch_time: 4000
+  max_in_flight: 1
+  update_watch_time: 20
+jobs:
+- name: simple
+  templates:
+  - name: simple
+  resource_pool: default
+  instances: 1
+  networks:
+  - name: default
+    static_ips:
+    - {{ .StaticIP }}
+  properties: {}

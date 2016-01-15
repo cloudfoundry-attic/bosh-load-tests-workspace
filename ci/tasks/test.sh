@@ -33,7 +33,9 @@ echo 'Running tests...'
 export GOPATH=$(realpath bosh-load-tests-workspace)
 
 bosh_src_path="$( cd bosh-src && pwd )"
+legacy=${LEGACY:-false}
 
 sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g bosh-load-tests-workspace/ci/concourse-config.json
+sed -i s#\"USING_LEGACY_MANIFEST\"#${legacy}#g bosh-load-tests-workspace/ci/concourse-config.json
 
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go bosh-load-tests-workspace/ci/concourse-config.json
