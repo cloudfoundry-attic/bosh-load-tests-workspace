@@ -9,7 +9,7 @@
   "cli_cmd": "BUNDLE_GEMFILE=BOSH_SRC_PATH/Gemfile bundle exec bosh",
   "number_of_workers": 10,
   "number_of_deployments": 50,
-  "using_legacy_manifest": "false",
+  "using_legacy_manifest": false,
   "flows": [
     ["deploy_with_dynamic"],
     ["deploy_with_dynamic", "recreate"],

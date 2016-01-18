@@ -33,11 +33,14 @@ echo 'Running tests...'
 export GOPATH=$(realpath bosh-load-tests-workspace)
 
 bosh_src_path="$( cd bosh-src && pwd )"
+legacy=${LEGACY:-false}
 
-if [ ${LEGACY:-false} = true ]; then
-  config_file_path = bosh-load-tests-workspace/ci/legacy-concourse-config.json
+if [ $legacy = true ]; then
+  echo "Using legacy deployment manifest"
+  config_file_path=bosh-load-tests-workspace/ci/legacy-concourse-config.json
 else
-  config_file_path = bosh-load-tests-workspace/ci/concourse-config.json
+  echo "Using non-legacy deployment manifest"
+  config_file_path=bosh-load-tests-workspace/ci/concourse-config.json
 fi
 
 sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g $config_file_path
