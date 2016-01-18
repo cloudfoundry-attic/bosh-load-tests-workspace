@@ -9,7 +9,7 @@
   "cli_cmd": "BUNDLE_GEMFILE=/Users/pivotal/workspace/bosh/Gemfile bundle exec bosh",
   "number_of_workers": 5,
   "number_of_deployments": 20,
-  "using_legacy_manifest": false,
+  "using_legacy_manifest": true,
   "flows": [
     ["deploy_with_dynamic"],
     ["deploy_with_dynamic", "recreate"],
