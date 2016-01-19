@@ -27,16 +27,23 @@ releases:
 update:
   canaries: 2
   canary_watch_time: 4000
-  max_in_flight: 1
+  max_in_flight: 4
   update_watch_time: 20
 jobs:
 - name: simple
   templates:
   - name: simple
   resource_pool: default
-  instances: 1
+  instances: 8
   networks:
   - name: default
     static_ips:
-    - {{ .StaticIP }}
+    - 192.168.1.10
+    - 192.168.1.11
+    - 192.168.1.12
+    - 192.168.1.13
+    - 192.168.1.14
+    - 192.168.1.15
+    - 192.168.1.16
+    - 192.168.1.17
   properties: {}
