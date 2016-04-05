@@ -13,5 +13,6 @@ run:
   path: bosh-load-tests-workspace/ci/tasks/test.sh
 
 params:
+  DB: postgresql
   RUBY_VERSION: 2.1.7
   LEGACY: false
