@@ -8,7 +8,7 @@
   "nats_start_cmd": "BUNDLE_GEMFILE=BOSH_SRC_PATH/Gemfile bundle exec nats-server",
   "cli_cmd": "BUNDLE_GEMFILE=BOSH_SRC_PATH/Gemfile bundle exec bosh",
   "number_of_workers": 3,
-  "number_of_deployments": 1,
+  "number_of_deployments": 10,
   "using_legacy_manifest": true,
   "flows": [
     ["deploy_with_dynamic"],
