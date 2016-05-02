@@ -1,18 +1,19 @@
 ---
 platform: linux
 
-image: docker:///bosh/main-no-redis
+image_resource:
+  type: docker-image
+  source:
+    repository: bosh/main
 
 inputs:
 - name: bosh-load-tests-workspace
-  path: bosh-load-tests-workspace
 - name: bosh-src
-  path: bosh-src
 
 run:
   path: bosh-load-tests-workspace/ci/tasks/test.sh
 
 params:
   DB: postgresql
-  RUBY_VERSION: 2.1.7
+  RUBY_VERSION: 2.3
   LEGACY: false
