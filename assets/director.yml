@@ -36,6 +36,7 @@ db: &bosh_db
   connection_options:
     max_connections: 32
     pool_timeout: 10
+    reconnect: true
 
 dns:
   db: *bosh_db
