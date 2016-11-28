@@ -30,9 +30,11 @@ esac
 source /etc/profile.d/chruby.sh
 chruby $RUBY_VERSION
 
+bosh_src_path="$PWD/$BOSH_SRC_PATH"
+
 echo 'Installing dependencies...'
 (
-  cd bosh-src
+  cd $bosh_src_path
   bundle install --local
   bundle exec rake spec:integration:install_dependencies
 
@@ -44,7 +46,6 @@ echo 'Running tests...'
 
 export GOPATH=$(realpath bosh-load-tests-workspace)
 
-bosh_src_path="$( cd bosh-src && pwd )"
 legacy=${LEGACY:-false}
 
 if [ $legacy = true ]; then
