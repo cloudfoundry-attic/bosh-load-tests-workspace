@@ -11,6 +11,7 @@
   "number_of_workers": 10,
   "number_of_deployments": 20,
   "using_legacy_manifest": false,
+  "ruby_version": "RUBY_VERSION",
   "flows": [
     ["deploy_with_dynamic"],
     ["deploy_with_dynamic", "recreate"],

@@ -58,4 +58,6 @@ fi
 
 sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g $config_file_path
 
+sed -i s#RUBY_VERSION#${RUBY_VERSION}#g $config_file_path
+
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go $config_file_path

@@ -1,7 +1,10 @@
 #!/bin/bash
 
-source /etc/profile.d/chruby.sh
-chruby ruby-2.3.1
+hash ruby 2>/dev/null
+if [[ $? != 0 ]]; then
+   source /etc/profile.d/chruby.sh
+fi
+chruby {{ .RubyVersion }}
 
 read INPUT
 
