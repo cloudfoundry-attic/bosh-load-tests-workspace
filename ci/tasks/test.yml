@@ -9,6 +9,7 @@ image_resource:
 inputs:
 - name: bosh-load-tests-workspace
 - name: bosh-src
+- name: bosh-cli
 
 run:
   path: bosh-load-tests-workspace/ci/tasks/test.sh
@@ -18,3 +19,4 @@ params:
   RUBY_VERSION: 2.3
   LEGACY: false
   BOSH_SRC_PATH: bosh-src/src
+  CLI_DIR_PATH: bosh-cli

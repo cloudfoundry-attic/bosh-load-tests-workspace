@@ -2,7 +2,10 @@
 
 set -e
 
-export PATH=/usr/local/ruby/bin:/usr/local/go/bin:$PATH
+cp $(ls $CLI_DIR_PATH/bosh-cli-*-linux-amd64) "$CLI_DIR_PATH/bosh"
+chmod 755 "$CLI_DIR_PATH/bosh"
+
+export PATH=$bosh_cli_dir:/usr/local/ruby/bin:/usr/local/go/bin:$PATH
 
 echo 'Starting DB...'
 case "$DB" in
