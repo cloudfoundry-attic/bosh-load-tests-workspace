@@ -2,10 +2,10 @@
 
 set -e
 
-cp $(ls $CLI_DIR_PATH/bosh-cli-*-linux-amd64) "$CLI_DIR_PATH/bosh"
-chmod 755 "$CLI_DIR_PATH/bosh"
+cp $(ls $CLI_DIR_PATH/bosh-cli-*-linux-amd64) "/tmp/gobosh"
+chmod a+x "/tmp/gobosh"
 
-export PATH=$bosh_cli_dir:/usr/local/ruby/bin:/usr/local/go/bin:$PATH
+export PATH=/usr/local/ruby/bin:/usr/local/go/bin:$PATH
 
 echo 'Starting DB...'
 case "$DB" in
@@ -62,5 +62,7 @@ fi
 sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g $config_file_path
 
 sed -i s#RUBY_VERSION#${RUBY_VERSION}#g $config_file_path
+
+cp bosh-load-tests-workspace/assets/ssl/* /tmp/
 
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go $config_file_path
