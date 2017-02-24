@@ -10,6 +10,7 @@ inputs:
 - name: bosh-load-tests-workspace
 - name: bosh-src
 - name: bosh-cli
+- name: bosh-agent
 
 run:
   path: bosh-load-tests-workspace/ci/tasks/test.sh
