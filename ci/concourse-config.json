@@ -30,6 +30,7 @@
     ["deploy_with_dynamic", "delete_deployment", "deploy_with_dynamic"],
     ["deploy_with_static", "delete_deployment", "deploy_with_static"],
     ["deploy_with_dynamic", "delete_deployment", "deploy_with_static"],
-    ["deploy_with_static", "delete_deployment", "deploy_with_dynamic"]
+    ["deploy_with_static", "delete_deployment", "deploy_with_dynamic"],
+    ["deploy_with_dynamic", "ignore", "recreate", "stop_hard", "start"]
   ]
 }
