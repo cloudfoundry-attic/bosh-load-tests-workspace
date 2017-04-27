@@ -7,6 +7,10 @@
   "nginx_start_cmd": "BOSH_SRC_PATH/tmp/integration-nginx/sbin/nginx",
   "verify_multidigest": "BOSH_SRC_PATH/tmp/verify-multidigest",
   "nats_start_cmd": "BUNDLE_GEMFILE=BOSH_SRC_PATH/Gemfile bundle exec nats-server",
+  "uaa" : {
+    "enabled": false,
+    "tomcat_path": "BOSH_SRC_PATH/tmp/integration-uaa/cloudfoundry-identity-uaa-3.5.0/apache-tomcat-8.0.21"
+  },
   "cli_cmd": "/tmp/gobosh",
   "dummy_cpi_path": "BOSH_SRC_PATH/bosh-director/bin/dummy_cpi",
   "number_of_workers": 3,
