@@ -1,0 +1,30 @@
+---
+name: {{ .DeploymentName }}
+director_uuid: {{ .DirectorUUID }}
+releases:
+- name: bosh-release
+  version: 0.1-dev
+update:
+  canaries: 2
+  canary_watch_time: 4000
+  max_in_flight: 1
+  update_watch_time: 20
+instance_groups:
+- name: ig_1
+  instances: ((/num_instances))
+  jobs:
+  - name: variable
+    properties:
+      prop1: ((/prop1_value))
+      prop2: ((/prop2_value))
+      prop3: ((/prop3_value))
+  resource_pool: default
+  networks:
+  - name: default
+  properties: {}
+variables:
+- name: /prop2_value
+  type: certificate
+  options:
+    is_ca: true
+    common_name: localhost

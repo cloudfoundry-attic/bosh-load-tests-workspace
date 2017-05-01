@@ -11,6 +11,10 @@
     "enabled": false,
     "tomcat_path": "/Users/pivotal/workspace/bosh/src/tmp/integration-uaa/cloudfoundry-identity-uaa-3.5.0/apache-tomcat-8.0.21"
   },
+  "config_server": {
+    "enabled": false,
+    "config_server_start_cmd": "/Users/pivotal/workspace/bosh/src/tmp/integration-config-server/bosh-config-server-executable"
+  },
   "cli_cmd": "gobosh",
   "dummy_cpi_path": "/Users/pivotal/workspace/bosh/src/bosh-director/bin/dummy_cpi",
   "number_of_workers": 5,

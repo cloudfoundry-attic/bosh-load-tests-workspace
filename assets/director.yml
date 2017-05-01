@@ -93,4 +93,14 @@ user_management:
     - {name: test, password: secret}
 {{end}}
 
-
+{{if .ConfigServerEnabled}}
+config_server:
+  enabled: true
+  url: https://localhost:65005
+  ca_cert_path: {{ .AssetsPath }}/config_server/rootCA.pem
+  uaa:
+    url: https://localhost:65002/uaa
+    client_id: test
+    client_secret: secret
+    ca_cert_path: /tmp/cert
+{{end}}
