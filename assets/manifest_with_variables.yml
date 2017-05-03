@@ -10,10 +10,10 @@ update:
   max_in_flight: 1
   update_watch_time: 20
 instance_groups:
-- name: ig_1
+- name: simple
   instances: ((/num_instances))
   jobs:
-  - name: variable
+  - name: simple
     properties:
       prop1: ((/prop1_value))
       prop2: ((/prop2_value))

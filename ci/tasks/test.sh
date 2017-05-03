@@ -37,7 +37,7 @@ bosh_src_path="$PWD/$BOSH_SRC_PATH"
 
 echo 'Installing dependencies...'
 
-gem install cf-uaac
+gem install cf-uaac --no-document
 
 agent_path=$bosh_src_path/go/src/github.com/cloudfoundry/
 mkdir -p $agent_path
@@ -67,6 +67,7 @@ else
 fi
 
 sed -i s#BOSH_SRC_PATH#${bosh_src_path}#g $config_file_path
+sed -i s#PWD#${PWD}#g $config_file_path
 
 sed -i s#RUBY_VERSION#${RUBY_VERSION}#g $config_file_path
 
