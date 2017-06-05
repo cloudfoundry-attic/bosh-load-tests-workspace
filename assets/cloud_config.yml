@@ -2,12 +2,15 @@
 networks:
 - name: default
   subnets:
-  - range: "192.168.1.0/24"
-    gateway: "192.168.1.1"
+  - range: "10.245.0.0/16"
+    gateway: "10.245.0.1"
     dns: ["8.8.8.8"]
-    static: ["192.168.1.10-192.168.1.100"]
+    static:
+    - "10.245.0.10-10.245.0.254"
+    - "10.245.1.1-10.245.8.254"
     reserved: []
-    cloud_properties: {}
+    cloud_properties:
+      name: director_network
 compilation:
   workers: 1
   network: default
@@ -17,5 +20,5 @@ resource_pools:
   cloud_properties: {}
   network: default
   stemcell:
-    name: 'ubuntu-stemcell'
-    version: '1'
+    name: 'bosh-warden-boshlite-ubuntu-trusty-go_agent'
+    version: latest

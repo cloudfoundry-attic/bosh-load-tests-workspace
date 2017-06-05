@@ -4,20 +4,17 @@ platform: linux
 image_resource:
   type: docker-image
   source:
-    repository: bosh/main
+    repository: bosh/main-bosh-docker
 
 inputs:
 - name: bosh-load-tests-workspace
-- name: bosh-src
+- name: bosh-candidate-stemcell
+- name: bosh-candidate-release
 - name: bosh-cli
-- name: bosh-agent
+- name: config-server-release #TODO confirm what version of config server should be used?
 
 run:
   path: bosh-load-tests-workspace/ci/tasks/test.sh
 
 params:
-  DB: postgresql
-  RUBY_VERSION: 2.3
   LEGACY: false
-  BOSH_SRC_PATH: bosh-src/src
-  CLI_DIR_PATH: bosh-cli
