@@ -1,7 +1,7 @@
 ---
 name: simple
 templates:
-  ctl: bin/ctl
+  pre-start.sh: bin/pre-start
 
 packages: []
 

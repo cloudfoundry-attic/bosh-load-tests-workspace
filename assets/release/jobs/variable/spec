@@ -1,7 +1,7 @@
 ---
 name: variable
 templates:
-  ctl: bin/ctl
+  pre-start.sh: bin/pre-start
   result.erb: result
 
 packages: []
