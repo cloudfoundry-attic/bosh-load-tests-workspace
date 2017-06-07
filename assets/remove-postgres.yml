@@ -1,0 +1,8 @@
+- type: remove
+  path: /instance_groups/name=bosh/jobs/name=postgres-9.4
+
+- type: remove
+  path: /instance_groups/name=bosh/properties/postgres
+
+- type: remove
+  path: /variables/name=postgres_password

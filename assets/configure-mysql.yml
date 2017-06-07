@@ -1,0 +1,37 @@
+- type: replace
+  path: /instance_groups/name=bosh/properties/director/db
+  value:
+    host: ((db_host))
+    port: ((db_port))
+    user: ((db_user))
+    password: ((db_password))
+    database: bosh
+    adapter: mysql2
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=uaa/properties/uaadb
+  value:
+    address: ((db_host))
+    databases:
+    - name: uaa
+      tag: uaa
+    db_scheme: mysql
+    port: ((db_port))
+    roles:
+    - name: root
+      password: ((db_password))
+      tag: admin
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=uaa/properties/uaa/database?
+  value:
+    case_insensitive: true
+
+- type: replace
+  path: /instance_groups/name=bosh/jobs/name=config_server/properties/db
+  value:
+    user: ((db_user))
+    password: ((db_password))
+    adapter: mysql
+    host: ((db_host))
+    port: ((db_port))

@@ -7,13 +7,48 @@ ROOT_DIR=$PWD
 
 cp -f ${PWD}/config-server-release/* /tmp/config-server-release
 
-start-bosh \
-    -o /usr/local/bosh-deployment/local-bosh-release.yml \
-    -o /usr/local/bosh-deployment/uaa.yml \
-    -o /usr/local/bosh-deployment/config-server.yml \
-    -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
-    -o $ROOT_DIR/bosh-load-tests-workspace/assets/scale-up-pg-connections.yml \
-    -v local_bosh_release=$PWD/bosh-candidate-release/bosh-dev-release.tgz
+case "$DB" in
+  mysql)
+    OUTER_CONTAINER_IP=$(set +eu; source /etc/profile.d/chruby.sh; chruby 2.3.1;
+                          ruby -rsocket -e 'puts Socket.ip_address_list
+                          .reject { |addr| !addr.ip? || addr.ipv4_loopback? || addr.ipv6? }
+                          .map { |addr| addr.ip_address }')
+    echo 'Starting DB...'
+
+    sudo service mysql start
+    mysql --password='password' <<< "GRANT ALL PRIVILEGES ON *.* TO root @'%' IDENTIFIED BY 'password';"
+    mysql --password='password' <<< "create database bosh;"
+    mysql --password='password' <<< "create database uaa;"
+    mysql --password='password' <<< 'create database `config_server`;'
+
+
+    start-bosh \
+        -o /usr/local/bosh-deployment/local-bosh-release.yml \
+        -o /usr/local/bosh-deployment/uaa.yml \
+        -o /usr/local/bosh-deployment/config-server.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/remove-postgres.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/configure-mysql.yml \
+        -v db_host=$OUTER_CONTAINER_IP \
+        -v db_user=root \
+        -v db_password=password \
+        -v db_port=3306 \
+        -v local_bosh_release=$PWD/bosh-candidate-release/bosh-dev-release.tgz
+    ;;
+  postgresql)
+    start-bosh \
+        -o /usr/local/bosh-deployment/local-bosh-release.yml \
+        -o /usr/local/bosh-deployment/uaa.yml \
+        -o /usr/local/bosh-deployment/config-server.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/scale-up-pg-connections.yml \
+        -v local_bosh_release=$PWD/bosh-candidate-release/bosh-dev-release.tgz
+    ;;
+  *)
+    echo $"Usage: DB={mysql|postgresql} $0 {commands}"
+    exit 1
+esac
+
 
 local_bosh_dir="/tmp/local-bosh/director"
 source "${local_bosh_dir}/env"
