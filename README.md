@@ -2,15 +2,7 @@
 
 To run tests:
 
-```
-cd ci
-vagrant up
-cd -
-fly sync
-fly execute -c ci/tasks/test.yml -x -i bosh-src=/Users/pivotal/workspace/bosh -i bosh-load-tests-workspace=$PWD
-```
-
-Tests use config.json, which specifies the paths to the dummy environment setup and the cli command.
+`fly -t production execute -c ci/tasks/test.yml -x -p -i bosh-load-tests-workspace=.  -j bosh/load-tests-postgres`
 
 Note: If you want to run the legacy load tests locally, make sure to change the following in `config.json` to these values:
 
