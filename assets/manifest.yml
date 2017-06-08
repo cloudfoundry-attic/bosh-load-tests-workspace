@@ -14,7 +14,7 @@ jobs:
   templates:
   - name: simple
   resource_pool: default
-  instances: 100
+  instances: 80
   networks:
   - name: default
   properties: {}
