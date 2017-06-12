@@ -79,10 +79,18 @@ export BOSH_CA_CERT="${local_bosh_dir}/ca.crt"
 
 BOSH_CLI_BIN=$(ls ${PWD}/bosh-cli/alpha-bosh-cli-*-linux-amd64)
 
+chmod +x $BOSH_CLI_BIN
+
 sed -i "s#BOSH_CLI_BIN#${BOSH_CLI_BIN}#g" $config_file_path
 
 sed -i s#PWD#${PWD}#g $config_file_path
 
 export CONFIG_SERVER_PASSWORD=$(bosh int "${local_bosh_dir}/creds.yml" --path /director_config_server_client_secret)
+
+set +eu
+
+source /etc/profile.d/chruby.sh
+chruby 2.3.1
+yes y | gem install cf-uaac --no-document
 
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go $config_file_path

@@ -19,8 +19,8 @@ resource_pools:
   cloud_properties: {}
   network: default
   stemcell:
-    name: 'ubuntu-stemcell'
-    version: '1'
+    os: ubuntu-trusty
+    version: latest
 releases:
 - name: bosh-release
   version: 0.1-dev
