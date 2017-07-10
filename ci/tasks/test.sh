@@ -7,13 +7,12 @@ ROOT_DIR=$PWD
 
 case "$DB" in
   mysql)
-    OUTER_CONTAINER_IP=$(set +eu; source /etc/profile.d/chruby.sh; chruby 2.3.1;
-                          ruby -rsocket -e 'puts Socket.ip_address_list
+    OUTER_CONTAINER_IP=$( ruby -rsocket -e 'puts Socket.ip_address_list
                           .reject { |addr| !addr.ip? || addr.ipv4_loopback? || addr.ipv6? }
                           .map { |addr| addr.ip_address }')
     echo 'Starting DB...'
 
-    sudo service mysql start
+    service mysql start
     mysql --password='password' <<< "GRANT ALL PRIVILEGES ON *.* TO root @'%' IDENTIFIED BY 'password';"
     mysql --password='password' <<< "create database bosh;"
     mysql --password='password' <<< "create database uaa;"
@@ -87,10 +86,6 @@ sed -i s#PWD#${PWD}#g $config_file_path
 
 export CONFIG_SERVER_PASSWORD=$(bosh int "${local_bosh_dir}/creds.yml" --path /director_config_server_client_secret)
 
-set +eu
-
-source /etc/profile.d/chruby.sh
-chruby 2.3.1
-yes y | gem install cf-uaac --no-document
+gem install cf-uaac --no-document
 
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go $config_file_path
