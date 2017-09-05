@@ -57,7 +57,7 @@ export BOSH_GW_PRIVATE_KEY="/tmp/jumpbox_ssh_key.pem"
 export BOSH_GW_USER="jumpbox"
 export BOSH_DIRECTOR_IP="10.245.0.3"
 
-bosh upload-stemcell bosh-candidate-stemcell/stemcell.tgz
+bosh upload-stemcell bosh-candidate-stemcell/bosh-stemcell-*-warden-boshlite-ubuntu-trusty-go_agent.tgz
 
 export GOPATH=$(realpath bosh-load-tests-workspace)
 
