@@ -20,7 +20,7 @@ case "$DB" in
     start-bosh \
         -o /usr/local/bosh-deployment/local-bosh-release.yml \
         -o /usr/local/bosh-deployment/uaa.yml \
-        -o /usr/local/bosh-deployment/config-server.yml \
+        -o /usr/local/bosh-deployment/misc/config-server.yml \
         -o /usr/local/bosh-deployment/experimental/nats-tls.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/remove-postgres.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
@@ -35,7 +35,7 @@ case "$DB" in
     start-bosh \
         -o /usr/local/bosh-deployment/local-bosh-release.yml \
         -o /usr/local/bosh-deployment/uaa.yml \
-        -o /usr/local/bosh-deployment/config-server.yml \
+        -o /usr/local/bosh-deployment/misc/config-server.yml \
         -o /usr/local/bosh-deployment/experimental/nats-tls.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/scale-up-pg-connections.yml \
