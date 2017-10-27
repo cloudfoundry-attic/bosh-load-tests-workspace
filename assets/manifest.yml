@@ -13,8 +13,13 @@ jobs:
 - name: simple
   templates:
   - name: simple
-  resource_pool: default
+  vm_type: default
+  stemcell: default
   instances: 80
   networks:
   - name: default
   properties: {}
+stemcells:
+- alias: default
+  name: 'bosh-warden-boshlite-ubuntu-trusty-go_agent'
+  version: latest

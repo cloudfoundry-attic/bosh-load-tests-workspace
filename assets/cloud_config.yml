@@ -15,10 +15,6 @@ compilation:
   workers: 1
   network: default
   cloud_properties: {}
-resource_pools:
+vm_types:
 - name: default
   cloud_properties: {}
-  network: default
-  stemcell:
-    name: 'bosh-warden-boshlite-ubuntu-trusty-go_agent'
-    version: latest

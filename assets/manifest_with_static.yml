@@ -14,9 +14,15 @@ jobs:
 - name: simple
   templates:
   - name: simple
-  resource_pool: default
+  vm_type: default
+  stemcell: default
   instances: {{ .NumInstances }}
   networks:
   - name: default
     static_ips: [ {{ .StaticIPs }} ]
   properties: {}
+
+stemcells:
+- alias: default
+  name: 'bosh-warden-boshlite-ubuntu-trusty-go_agent'
+  version: latest

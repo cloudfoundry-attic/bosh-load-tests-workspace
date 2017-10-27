@@ -18,10 +18,15 @@ instance_groups:
       prop1: ((/prop1_value))
       prop2: ((/prop2_value))
       prop3: ((/prop3_value))
-  resource_pool: default
+  vm_type: default
+  stemcell: default
   networks:
   - name: default
   properties: {}
+stemcells:
+- alias: default
+  name: 'bosh-warden-boshlite-ubuntu-trusty-go_agent'
+  version: latest
 variables:
 - name: /prop2_value
   type: certificate
