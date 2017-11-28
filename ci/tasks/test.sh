@@ -21,6 +21,7 @@ case "$DB" in
         -o /usr/local/bosh-deployment/local-bosh-release.yml \
         -o /usr/local/bosh-deployment/uaa.yml \
         -o /usr/local/bosh-deployment/misc/config-server.yml \
+        -o /usr/local/bosh-deployment/experimental/blobstore-https.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/remove-postgres.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/configure-mysql.yml \
@@ -35,6 +36,7 @@ case "$DB" in
         -o /usr/local/bosh-deployment/local-bosh-release.yml \
         -o /usr/local/bosh-deployment/uaa.yml \
         -o /usr/local/bosh-deployment/misc/config-server.yml \
+        -o /usr/local/bosh-deployment/experimental/blobstore-https.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/scale-up-pg-connections.yml \
         -v local_bosh_release=$PWD/bosh-candidate-release/bosh-dev-release.tgz
