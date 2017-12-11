@@ -2,7 +2,7 @@
   "assets_path": "PWD/bosh-load-tests-workspace/assets",
   "cli_cmd": "BOSH_CLI_BIN",
   "number_of_workers": 10,
-  "number_of_deployments": 1,
+  "number_of_deployments": 20,
   "using_legacy_manifest": true,
   "ruby_version": "RUBY_VERSION",
   "flows": [
