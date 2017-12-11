@@ -25,6 +25,7 @@ case "$DB" in
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/remove-postgres.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/configure-mysql.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/make-disk-bigger.yml \
         -v db_host=$OUTER_CONTAINER_IP \
         -v db_user=root \
         -v db_password=password \
