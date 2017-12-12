@@ -15,7 +15,7 @@ jobs:
   - name: simple
   vm_type: default
   stemcell: default
-  instances: 80
+  instances: 10
   networks:
   - name: default
   properties: {}
