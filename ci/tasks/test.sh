@@ -91,7 +91,6 @@ export CONFIG_SERVER_PASSWORD=$(bosh int "${local_bosh_dir}/creds.yml" --path /d
 set +u # avoid failure due to unbound variable in chruby
 source /etc/profile.d/chruby.sh
 chruby 2.4.2
-set -u
 
 gem install cf-uaac --no-rdoc --no-ri
 
