@@ -88,6 +88,9 @@ sed -i s#PWD#${PWD}#g $config_file_path
 
 export CONFIG_SERVER_PASSWORD=$(bosh int "${local_bosh_dir}/creds.yml" --path /director_config_server_client_secret)
 
+source /etc/profile.d/chruby.sh
+chruby 2.4.2
+
 gem install cf-uaac --no-rdoc --no-ri
 
 go run bosh-load-tests-workspace/src/github.com/cloudfoundry-incubator/bosh-load-tests/main.go $config_file_path
