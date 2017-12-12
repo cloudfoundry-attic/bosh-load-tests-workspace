@@ -40,6 +40,7 @@ case "$DB" in
         -o /usr/local/bosh-deployment/experimental/blobstore-https.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/add-updates-section.yml \
         -o $ROOT_DIR/bosh-load-tests-workspace/assets/scale-up-pg-connections.yml \
+        -o $ROOT_DIR/bosh-load-tests-workspace/assets/make-disk-bigger.yml \
         -v local_bosh_release=$PWD/bosh-candidate-release/bosh-dev-release.tgz
     ;;
   *)
