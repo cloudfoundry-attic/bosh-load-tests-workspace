@@ -88,9 +88,11 @@ sed -i s#PWD#${PWD}#g $config_file_path
 
 export CONFIG_SERVER_PASSWORD=$(bosh int "${local_bosh_dir}/creds.yml" --path /director_config_server_client_secret)
 
-set +u # avoid failure due to unbound variable in chruby
-source /etc/profile.d/chruby.sh
-chruby 2.4.2
+if [ -f /etc/profile.d/chruby.sh ]; then
+  set +u # avoid failure due to unbound variable in chruby
+  source /etc/profile.d/chruby.sh
+  chruby 2.4.2
+fi
 
 gem install cf-uaac --no-rdoc --no-ri
 
