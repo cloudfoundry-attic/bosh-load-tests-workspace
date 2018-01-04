@@ -4,11 +4,11 @@ director_uuid: {{ .DirectorUUID }}
 networks:
 - name: default
   subnets:
-  - range: "10.245.0.0/24"
-    gateway: "10.245.0.1"
+  - range: "10.245.{{ .DeploymentIndex }}.0/24"
+    gateway: "10.245.{{ .DeploymentIndex }}.1"
     dns: ["8.8.8.8"]
-    static: ["10.245.0.10-10.245.0.30"]
-    reserved: ["10.245.0.3"]
+    static: ["10.245.{{ .DeploymentIndex }}.10-10.245.{{ .DeploymentIndex }}.100"]
+    reserved: ["10.245.{{ .DeploymentIndex }}.3"]
     cloud_properties:
       name: director_network
 compilation:

@@ -4,11 +4,11 @@ director_uuid: {{ .DirectorUUID }}
 networks:
 - name: default
   subnets:
-  - range: "10.245.0.0/24"
-    gateway: "10.245.0.1"
+  - range: "10.245.{{ .DeploymentIndex }}.0/24"
+    gateway: "10.245.{{ .DeploymentIndex }}.1"
     dns: ["8.8.8.8"]
-    static: ["10.245.0.10-10.245.0.109"]
-    reserved: ["10.245.0.3"]
+    static: [ {{ .StaticIPs }} ]
+    reserved: ["10.245.{{ .DeploymentIndex }}.3"]
     cloud_properties:
       name: director_network
 compilation:
@@ -38,15 +38,5 @@ jobs:
   instances: 10
   networks:
   - name: default
-    static_ips:
-    - 10.245.0.10
-    - 10.245.0.11
-    - 10.245.0.12
-    - 10.245.0.13
-    - 10.245.0.14
-    - 10.245.0.15
-    - 10.245.0.16
-    - 10.245.0.17
-    - 10.245.0.18
-    - 10.245.0.19
+    static_ips: [ {{ .StaticIPs }} ]
   properties: {}
