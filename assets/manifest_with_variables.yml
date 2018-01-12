@@ -12,6 +12,7 @@ update:
 instance_groups:
 - name: simple
   instances: ((/num_instances))
+  azs: [z1,z2,z3]
   jobs:
   - name: simple
     properties:

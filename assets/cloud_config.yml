@@ -5,6 +5,7 @@ networks:
   - range: "10.245.0.0/16"
     gateway: "10.245.0.1"
     dns: ["8.8.8.8"]
+    azs: [z1,z2,z3]
     static:
     - "10.245.0.10-10.245.0.254"
     - "10.245.1.1-10.245.8.254"
@@ -14,7 +15,12 @@ networks:
 compilation:
   workers: 1
   network: default
+  az: z1
   cloud_properties: {}
 vm_types:
 - name: default
   cloud_properties: {}
+azs:
+- name: z1
+- name: z2
+- name: z3
