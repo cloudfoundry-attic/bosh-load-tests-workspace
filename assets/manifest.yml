@@ -16,7 +16,7 @@ instance_groups:
   - name: simple
   vm_type: default
   stemcell: default
-  instances: 10
+  instances: 5
   networks:
   - name: default
   properties: {}
