@@ -7,7 +7,7 @@ To run tests:
 Note: If you want to run the legacy load tests locally, make sure to change the following in `config.json` to these values:
 
 ```
-{ 
+{
   ...
   "number_of_workers": 3,
   "number_of_deployments": 1,
@@ -19,7 +19,7 @@ Note: If you want to run the legacy load tests locally, make sure to change the 
 To update dependencies:
 
 ```
-./update_deps
+./update-deps
 ```
 
-It will pull latest master and records dependencies git sha in deps.txt.
+It will pull latest master in the submodule.
